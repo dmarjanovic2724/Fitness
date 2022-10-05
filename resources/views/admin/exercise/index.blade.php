@@ -5,8 +5,11 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="flex justify-end m-2 p-2">
+    <div class="py-12"> 
+        <p class="text-2xl font-extrabold">
+            Exercises
+        </p>
+        <div class="flex justify-end m-2 p-2">            
             <a href="{{ route('admin.exercise.create') }}"
                 class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">New exercise</a>
         </div>
@@ -42,7 +45,7 @@
                                     {{ $exercise->name }}
                                 </td>                                                 
                                <td class="w-44 py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img src="{{ Storage::url($exercise->image) }}"  class="hover:scale-125 w-32 h-28 rounded">
+                                    <img src="{{ Storage::url($exercise->image) }}"  class="w-32 h-28 rounded">
                                 </td>
                                 <td
                                     class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-wrap dark:text-white">
@@ -51,6 +54,8 @@
                                 <td
                                     class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <div class="flex space-x-2">
+                                        <a href="{{ route('exercise.show', $exercise->id) }}"
+                                            class="px-4 py-2 bg-green-500 hover:bg-green-700 rounded-lg  text-white">Show</a>
                                         <a href="{{ route('admin.exercise.edit', $exercise->id) }}"
                                             class="px-4 py-2 bg-green-500 hover:bg-green-700 rounded-lg  text-white">Edit</a>
                                         <form class="px-4 py-2 bg-red-500 hover:bg-red-700 rounded-lg text-white"

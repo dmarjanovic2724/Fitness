@@ -49,7 +49,7 @@ class PlanController extends Controller
             'program_id' => $request->program,
             'user_id' => $request->user
         ]);
-        return to_route('admin.plan.index')->with('success', 'Program created successfully.');
+        return to_route('admin.plan.index')->with('success', 'Plan created successfully.');
     }
 
     /**

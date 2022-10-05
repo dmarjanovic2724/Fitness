@@ -40,15 +40,16 @@ class ExerciseController extends Controller
     public function store(ExerciseStoreRequest $request)
     {
         $image = $request->file('image')->store('public/exercise');
-        Exercise::create([
-            'name'=>$request->name,
-            'type'=>$request->type,
-            'level_1'=>$request->level_1,
-            'level_2'=>$request->level_2,
-            'level_3'=>$request->level_3,
-            'image'=>$image,
-            'description'=>$request->description,
-        ]);
+        Exercise::create($request->validated());
+        // Exercise::create([
+        //     'name'=>$request->name,
+        //     'type'=>$request->type,
+        //     'level_1'=>$request->level_1,
+        //     'level_2'=>$request->level_2,
+        //     'level_3'=>$request->level_3,
+        //     'image'=>$image,
+        //     'description'=>$request->description,
+        // ]);
         return to_route('admin.exercise.index')->with('success', 'Exercise created successfully.');
     }
 
@@ -58,10 +59,11 @@ class ExerciseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     $exercise=Exercise::all()->where('id',$id)->first();
+    //     return view('admin.exercise.show', compact('exercise'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -84,7 +86,8 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, Exercise $exercise)
     {
-
+        
+        
         $request->validate([
             'name'=>'required',            
             'level_1'=>'required',
@@ -97,7 +100,7 @@ class ExerciseController extends Controller
             Storage::delete($exercise->image);
             $image=$request->file('image')->store('public/exercise');
         }
-    
+  
         $exercise->update([
             'name'=>$request->name,
             'type'=>$request->type,
@@ -107,7 +110,7 @@ class ExerciseController extends Controller
             'image'=>$image,
             'description'=>$request->description,
         ]);
-        return to_route('admin.exercise.index')->with('success', 'Exercise created successfully.');
+        return to_route('admin.exercise.index')->with('success', 'Exercise updated successfully.');
     }
 
     /**
@@ -120,6 +123,6 @@ class ExerciseController extends Controller
     {
         Storage::delete($exercise->image);
         $exercise->delete();
-        return to_route('admin.exercise.index')->with('danger','Category deleted successfully');
+        return to_route('admin.exercise.index')->with('danger','Exercises deleted successfully');
     }
 }

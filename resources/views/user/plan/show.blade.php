@@ -33,21 +33,28 @@
                     <tbody>
                         @foreach ($program as $program)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                          
                                 <td
                                     class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $program['name'] }}
+                                    {{ $program->name }}
                                 </td>
                                 <td class="w-44 py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img src="{{ Storage::url($program['image']) }}"  class="hover:scale-125 w-32 h-28 rounded">
+                                    <img src="{{ Storage::url($program->image) }}"  class="hover:scale-125 w-32 h-28 rounded">
                                 </td>
                                 <td
                                     class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-wrap dark:text-white">
-                                    {{ $program['description'] }}
+                                    {{ $program->descpription }}
                                 </td>  
                                 <td
                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-wrap dark:text-white">
                                 {{ $methods }}
-                            </td>                               
+                            </td>  
+                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="flex space-x-2">
+                                        <a href="{{ route('exercise.show', $program->id) }}"
+                                            class="px-4 py-2 bg-green-500 hover:bg-green-700 rounded-lg  text-white">Show</a> 
+                                    </div>
+                            </td>                         
                             </tr>
                         @endforeach
 

@@ -40,7 +40,7 @@
                                 <td
                                     class="w-44 py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <img src="{{ Storage::url($item->image) }}"
-                                        class="hover:scale-125 w-32 h-28 rounded">
+                                        class="w-32 h-28 rounded">
                                 </td>
                                 <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-wrap dark:text-white">
                                     {{ $item->description }}

@@ -6,6 +6,9 @@
     </x-slot>
 
     <div class="py-12">
+        <p class="text-2xl font-extrabold">
+            Plans
+        </p>
         <div class="flex justify-end m-2 p-2">
             <a href="{{ route('admin.plan.create') }}"
                 class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">New plan</a>

@@ -42,7 +42,7 @@
                 class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
                 <x-admin-nav-link :href="route('admin.exercise.index')"
                     :active="request()->routeIs('admin.exercise.index')">
-                    {{ __('Exercise') }}
+                    {{ __('Exercises') }}
                 </x-admin-nav-link>
                 <x-admin-nav-link :href="route('admin.program.index')" :active="request()->routeIs('admin.program.index')">
                     {{ __('Programs') }}

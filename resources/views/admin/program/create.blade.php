@@ -83,7 +83,7 @@
                                 </td>
                                 <td>
                                     <img src="{{ Storage::url($exercise->image) }}"
-                                        class="hover:scale-125 w-24 h-24 rounded">
+                                        class=" w-24 h-24 rounded">
                                 </td>
                                 <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-wrap dark:text-white">
                                     {{ $exercise->description }}

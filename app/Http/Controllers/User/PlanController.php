@@ -20,10 +20,6 @@ class PlanController extends Controller
         $userName = User::find($userId)->name;
 
         $userPlan = User::find($userId)->program;
-       
-
-
-
 
         return view('user.plan.index', compact('userName', 'userPlan'));
     }
@@ -60,8 +56,9 @@ class PlanController extends Controller
         }
 
 
-        $program = $data;
-
+        $program =collect($data);
+        
+        
 
         return view('user.plan.show', compact('program', 'userId', 'methods'));
     }
