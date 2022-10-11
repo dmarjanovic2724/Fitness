@@ -92,7 +92,7 @@ class MembersController extends Controller
     public function update(Request $request, $id)
     {
         $userDetail = UserDetail::where('user_id', $id)->first();
-        dd($userDetail);
+        // dd($userDetail);
         if ($userDetail == null) {
             UserDetail::create([
                     'user_id' => $id

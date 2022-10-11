@@ -36,15 +36,12 @@ Route::put('/plan/{id}',[UserPlanController::class,'programComplete'])->name('pr
   
 });
 
-//dashboard and exercises
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
 
-Route::middleware(['auth'])->group(function(){
-Route::view('/dashboard', 'dashboard')->name('dashboard'); 
-Route::get('exercise/show/{id}', [ExerciseShow::class,'exerciseShow'])->name('exercise.show');
-});
+    Route::middleware(['auth'])->group(function(){
+    Route::view('/dashboard', 'dashboard')->name('dashboard'); 
+    Route::get('exercise/show/{id}', [ExerciseShow::class,'exerciseShow'])->name('exercise.show');
+    });
+
 
 // admin routes
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
@@ -54,9 +51,5 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/plan', PlanController::class);
     Route::resource('/exercise', ExerciseController::class)->except(['show']); 
 });
-
-
-
-
 
 require __DIR__.'/auth.php';

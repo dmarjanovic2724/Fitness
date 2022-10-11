@@ -25,10 +25,11 @@ class ExerciseStoreRequest extends FormRequest
     {
         return [
             'name'=>['required'],
+            'type'=>['required'],
             'level_1'=>['required'],
             'level_2'=>['required'],
             'level_3'=>['required'],
-            'image'=>['required','image'],
+            'image'=>['required', 'image'],
             'description'=>['required'],
         ];
     }

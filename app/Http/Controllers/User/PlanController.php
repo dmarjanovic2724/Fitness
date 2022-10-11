@@ -8,8 +8,7 @@ use App\Models\Plan;
 use App\Models\Program;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 
 class PlanController extends Controller
 {
@@ -19,7 +18,7 @@ class PlanController extends Controller
 
         $userName = User::find($userId)->name;
 
-        $userPlan = User::find($userId)->program;
+        $userPlan = User::find($userId)->program;     
 
         return view('user.plan.index', compact('userName', 'userPlan'));
     }
@@ -66,8 +65,15 @@ class PlanController extends Controller
     public function programComplete(Request $request, $id)
     {
 
-       if($request->input('complete') == "save")
-       {
+        // var_dump($request["feedback-".$id]);
+        // die();
+        $request->validate([
+            'feedback-'.$id=>'required|max:255'
+        ],
+    [
+        'feedback-'.$id.'.required'=> 'Please comment your workout session',
+    ]);  
+          
         $userId = auth()->user()->id;
        
         $plan = Plan::where('program_id', $id)->where('user_id', $userId)->update([
@@ -79,7 +85,7 @@ class PlanController extends Controller
        
         
         return to_route('user.plan.index')->with('success', 'Congratulation, your working session '.$programName.' is done');
-       }
+       
         
     }
 }

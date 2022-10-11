@@ -37,21 +37,22 @@ class ExerciseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+   
     public function store(ExerciseStoreRequest $request)
     {
-        $image = $request->file('image')->store('public/exercise');
-        Exercise::create($request->validated());
-        // Exercise::create([
-        //     'name'=>$request->name,
-        //     'type'=>$request->type,
-        //     'level_1'=>$request->level_1,
-        //     'level_2'=>$request->level_2,
-        //     'level_3'=>$request->level_3,
-        //     'image'=>$image,
-        //     'description'=>$request->description,
-        // ]);
-        return to_route('admin.exercise.index')->with('success', 'Exercise created successfully.');
+            $image = $request->file('image')->store('public/exercise');
+            Exercise::create([
+                'name'=>$request->name,
+                'type'=>$request->type,
+                'level_1'=>$request->level_1,
+                'level_2'=>$request->level_2,
+                'level_3'=>$request->level_3,
+                'image'=>$image,
+                'description'=>$request->description,
+            ]);
+            return to_route('admin.exercise.index')->with('success', 'Exercise created successfully.');
     }
+    
 
     /**
      * Display the specified resource.
